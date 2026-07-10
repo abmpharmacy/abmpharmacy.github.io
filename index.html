@@ -19,7 +19,6 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between py-4 md:h-24 items-center gap-4">
                 <div class="flex-shrink-0 flex items-center">
-                    <!-- නම වෙනස් කළා -->
                     <span class="heading-font text-2xl font-bold text-emerald-600">ABM PHARMACY</span>
                 </div>
                 <div class="flex space-x-6 font-medium text-sm sm:text-base">
@@ -29,7 +28,6 @@
                     <a href="medicines.html" class="text-slate-600 hover:text-emerald-600 transition">Medicines</a>
                     <a href="contact.html" class="text-slate-600 hover:text-emerald-600 transition">Contact</a>
                 </div>
-                <!-- අංක දෙකේ ෆොන්ට් ප්‍රශ්නය විසඳුවා (whitespace-nowrap දැම්මා) -->
                 <div class="flex flex-col sm:flex-row items-center gap-2">
                     <a href="tel:0768961778" class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition shadow-sm whitespace-nowrap">
                         <span>ABM:</span> 076 896 1778
@@ -65,9 +63,17 @@
                 </div>
             </div>
 
+            <!-- මෙතන ලෝගෝ එක පෙන්වන කොටස -->
             <div class="hidden md:flex relative h-96 rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-slate-950/50 backdrop-blur-sm items-center justify-center p-12">
                 <div class="absolute inset-0 bg-gradient-to-br from-emerald-900/30 to-slate-950 opacity-80"></div>
-                <img src="assets/logo.png" alt="ABM Pharmacy Logo" class="relative z-10 max-w-full max-h-full object-contain">
+                
+                <img src="assets/logo.png" alt="ABM Pharmacy Logo" class="relative z-10 max-w-full max-h-full object-contain"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                
+                <div class="hidden text-white text-4xl font-bold heading-font relative z-10 text-center">
+                    ABM <span class="text-emerald-400">PHARMACY</span>
+                </div>
+
                 <div class="absolute bottom-0 left-0 right-0 p-6 z-10 bg-gradient-to-t from-slate-950/90 to-transparent">
                     <p class="text-xs uppercase tracking-wider font-semibold text-emerald-400 mb-1">100% Authenticity Guaranteed</p>
                     <p class="text-sm text-white/90">Managed by qualified professionals under rigid quality controls.</p>
