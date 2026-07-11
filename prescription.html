@@ -4,72 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Prescription | ABM Pharmacy</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .heading-font { font-family: 'Outfit', sans-serif; }
+    </style>
 </head>
-<body class="bg-slate-50">
+<body class="bg-slate-50 text-slate-800">
 
-    <!-- Navigation Bar -->
-    <nav class="bg-white shadow-sm py-4 px-6 flex justify-between items-center">
-        <h1 class="text-xl font-bold text-emerald-600">ABM PHARMACY</h1>
-        <div class="space-x-4 text-sm font-medium">
-            <a href="index.html" class="text-slate-600">Home</a>
-            <a href="prescription.html" class="text-emerald-600 border-b-2 border-emerald-600">Upload Prescription</a>
-            <a href="medicines.html" class="text-slate-600">Medicines</a>
-            <a href="contact.html" class="text-slate-600">Contact</a>
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between py-4 md:h-24 items-center gap-4">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="heading-font text-2xl font-bold text-emerald-600">ABM PHARMACY</span>
+                </div>
+                <div class="flex space-x-6 font-medium text-sm sm:text-base">
+                    <a href="index.html" class="text-slate-600 hover:text-emerald-600 transition">Home</a>
+                    <a href="about.html" class="text-slate-600 hover:text-emerald-600 transition">About Us</a>
+                    <a href="prescription.html" class="text-emerald-600 border-b-2 border-emerald-600 pb-1 font-semibold">Upload Prescription</a>
+                    <a href="medicines.html" class="text-slate-600 hover:text-emerald-600 transition">Medicines</a>
+                    <a href="contact.html" class="text-slate-600 hover:text-emerald-600 transition">Contact</a>
+                </div>
+                <div class="flex flex-col sm:flex-row items-center gap-2">
+                    <a href="tel:0768961778" class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition shadow-sm whitespace-nowrap">
+                        <span>ABM:</span> 076 896 1778
+                    </a>
+                    <a href="tel:0712068006" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition shadow-sm whitespace-nowrap">
+                        <span>Sirikatha:</span> 071 206 8006
+                    </a>
+                </div>
+            </div>
         </div>
-        <a href="tel:0768961778" class="bg-emerald-50 text-emerald-600 px-4 py-2 rounded-full font-bold text-sm">Call: 076 896 1778</a>
     </nav>
 
-    <!-- Main Content -->
-    <div class="max-w-4xl mx-auto mt-10 bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col md:flex-row min-h-[500px]">
+    <div class="max-w-4xl mx-auto mt-12 mb-20 bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row min-h-[500px]">
         
-        <!-- Sidebar -->
-        <div class="bg-slate-950 p-10 text-white md:w-1/3 flex flex-col justify-between" style="background: linear-gradient(to bottom, #064e3b, #020617);">
+        <div class="bg-slate-950 p-12 text-white md:w-1/3 flex flex-col justify-between" style="background-image: linear-gradient(to bottom right, #064e3b, #020617);">
             <div>
-                <h2 class="text-2xl font-bold mb-4">Quick & Secure Order</h2>
-                <p class="text-emerald-100/70 text-sm">Please upload a clear photograph of your medical prescription. Our qualified pharmacists will review it and get your order prepared immediately.</p>
+                <h2 class="heading-font text-3xl font-bold mb-6">Quick & Secure Order</h2>
+                <p class="text-emerald-100/70 text-sm mb-8">Please upload a clear photograph of your medical prescription. Our qualified pharmacists will review it and get your order prepared immediately.</p>
             </div>
-            <div class="space-y-3 text-xs">
-                <p>🛡️ 100% Genuine Medicines Only</p>
-                <p>❄️ Temperature Controlled Storage</p>
-                <p>⚡ Ready for Pickup within Minutes</p>
+            <div class="space-y-4 text-sm">
+                <p class="flex items-center gap-2">🛡️ 100% Genuine Medicines Only</p>
+                <p class="flex items-center gap-2">❄️ Temperature Controlled Storage</p>
+                <p class="flex items-center gap-2">⚡ Ready for Pickup within Minutes</p>
             </div>
         </div>
 
-        <!-- Form Section -->
-        <div class="p-10 md:w-2/3">
-            <h2 class="text-xl font-bold mb-1">Upload Prescription</h2>
-            <p class="text-sm text-slate-500 mb-6">Please fill in your details to send the prescription via WhatsApp.</p>
+        <div class="p-12 md:w-2/3">
+            <h2 class="text-2xl font-bold mb-1">Upload Prescription</h2>
+            <p class="text-sm text-slate-500 mb-8">Please fill in your details to send the prescription via WhatsApp.</p>
             
-            <div class="space-y-4">
-                <!-- Pharmacy Select -->
+            <div class="space-y-5">
                 <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">Select Pharmacy</label>
-                    <select id="pharmacySelect" class="w-full px-3 py-2 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-emerald-500 text-sm">
+                    <label class="block text-sm font-medium text-slate-700 mb-1.5">Select Pharmacy</label>
+                    <select id="pharmacySelect" class="w-full px-4 py-3 border border-slate-300 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500">
                         <option value="94768961778">ABM Pharmacy (076 896 1778)</option>
                         <option value="94712068006">Sirikatha Pharmacy (071 206 8006)</option>
                     </select>
                 </div>
 
-                <!-- Name -->
                 <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">Your Name</label>
-                    <input type="text" id="userName" placeholder="John Doe" class="w-full px-3 py-2 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-emerald-500 text-sm">
+                    <label class="block text-sm font-medium text-slate-700 mb-1.5">Your Name</label>
+                    <input type="text" id="userName" placeholder="John Doe" class="w-full px-4 py-3 border border-slate-300 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500">
                 </div>
 
-                <!-- Phone -->
                 <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">WhatsApp Number</label>
-                    <input type="tel" id="userPhone" placeholder="0771234567" class="w-full px-3 py-2 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-emerald-500 text-sm">
+                    <label class="block text-sm font-medium text-slate-700 mb-1.5">WhatsApp Number</label>
+                    <input type="tel" id="userPhone" placeholder="0771234567" class="w-full px-4 py-3 border border-slate-300 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500">
                 </div>
 
-                <!-- Upload -->
                 <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">Upload Photo</label>
-                    <input type="file" id="prescriptionFile" class="w-full px-3 py-2 border-2 border-dashed border-slate-200 rounded-lg text-sm cursor-pointer hover:border-emerald-500">
+                    <label class="block text-sm font-medium text-slate-700 mb-1.5">Upload Photo</label>
+                    <input type="file" id="prescriptionFile" class="w-full px-4 py-3 border-2 border-dashed border-slate-300 rounded-xl cursor-pointer hover:border-emerald-500 transition">
                 </div>
 
-                <button onclick="sendToWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-lg text-sm transition">
+                <button onclick="sendToWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-xl transition shadow-lg shadow-emerald-600/20">
                     Submit via WhatsApp
                 </button>
             </div>
