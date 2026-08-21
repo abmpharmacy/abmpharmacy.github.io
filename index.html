@@ -37,41 +37,48 @@
 </head>
 <body class="bg-slate-50 text-slate-800 relative min-h-screen">
 
-    <nav class="bg-white shadow-md sticky top-0 z-50">
+    <!-- Fixed & Clean Navbar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between py-4 md:h-24 items-center gap-4">
+            <div class="flex items-center justify-between h-20 gap-4">
+                
+                <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <span class="heading-font text-2xl font-bold text-emerald-600">ABM PHARMACY</span>
+                    <span class="heading-font text-xl lg:text-2xl font-bold text-emerald-600 whitespace-nowrap">ABM PHARMACY</span>
                 </div>
-                <div class="flex space-x-6 font-medium text-sm sm:text-base">
-                    <a href="index.html" class="text-emerald-600 border-b-2 border-emerald-600 pb-1">Home</a>
+
+                <!-- Navigation Links (Centrally Aligned & Single Line) -->
+                <div class="hidden md:flex items-center space-x-4 lg:space-x-6 font-medium text-sm whitespace-nowrap">
+                    <a href="index.html" class="text-emerald-600 border-b-2 border-emerald-600 pb-1 font-semibold">Home</a>
                     <a href="about.html" class="text-slate-600 hover:text-emerald-600 transition">About Us</a>
-                    <a href="prescription.html" class="text-slate-600 hover:text-emerald-600 transition font-semibold text-emerald-600">Upload Prescription</a>
+                    <a href="prescription.html" class="text-slate-600 hover:text-emerald-600 transition">Upload Prescription</a>
                     <a href="medicines.html" class="text-slate-600 hover:text-emerald-600 transition">Medicines</a>
                     <a href="contact.html" class="text-slate-600 hover:text-emerald-600 transition">Contact</a>
                 </div>
                 
-                <!-- Contact Buttons with Live Open/Closed Badges -->
-                <div class="flex flex-col sm:flex-row items-center gap-2">
+                <!-- Call Buttons with Live Open/Closed Badges -->
+                <div class="flex items-center gap-2">
                     <div class="flex items-center gap-1.5 bg-emerald-50 px-2 py-1 rounded-xl border border-emerald-100">
-                        <a href="tel:0768961778" class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 rounded-lg font-bold text-xs flex items-center gap-1.5 transition shadow-sm whitespace-nowrap">
+                        <a href="tel:0768961778" class="bg-emerald-600 hover:bg-emerald-700 text-white px-2.5 py-1 rounded-lg font-bold text-xs flex items-center gap-1 transition shadow-sm whitespace-nowrap">
                             <span>ABM:</span> 076 896 1778
                         </a>
                         <span id="abm-status" class="status-badge">Checking...</span>
                     </div>
 
                     <div class="flex items-center gap-1.5 bg-blue-50 px-2 py-1 rounded-xl border border-blue-100">
-                        <a href="tel:0712068006" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg font-bold text-xs flex items-center gap-1.5 transition shadow-sm whitespace-nowrap">
+                        <a href="tel:0712068006" class="bg-blue-600 hover:bg-blue-700 text-white px-2.5 py-1 rounded-lg font-bold text-xs flex items-center gap-1 transition shadow-sm whitespace-nowrap">
                             <span>Sirikatha:</span> 071 206 8006
                         </a>
                         <span id="sirikatha-status" class="status-badge">Checking...</span>
                     </div>
                 </div>
+
             </div>
         </div>
     </nav>
 
-    <header class="bg-gradient-to-r from-emerald-900/90 to-slate-950/95 text-white py-24 px-4 sm:px-6 lg:px-8 relative">
+    <!-- Header / Hero Section -->
+    <header class="bg-gradient-to-r from-emerald-900/90 to-slate-950/95 text-white py-20 px-4 sm:px-6 lg:px-8 relative">
         <div class="absolute inset-0 z-0 opacity-20 mix-blend-overlay">
             <img src="https://images.unsplash.com/photo-1586015555751-63bb77f4322a?auto=format&fit=crop&q=80&w=1600" class="w-full h-full object-cover" alt="Pharmacy Background">
         </div>
@@ -105,6 +112,7 @@
         </div>
     </header>
 
+    <!-- Categories Section -->
     <section class="max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
             <h2 class="heading-font text-3xl font-bold text-slate-900 sm:text-4xl">Our Pharmacy Categories</h2>
@@ -154,6 +162,7 @@
         </svg>
     </a>
 
+    <!-- Footer -->
     <footer class="bg-slate-900 text-slate-400 py-6 text-center text-sm border-t border-slate-800">
         <p>© 2026 ABM & Sirikatha Pharmacy. All Rights Reserved.</p>
     </footer>
@@ -162,15 +171,15 @@
     <script>
         function updatePharmacyStatus() {
             const now = new Date();
-            const day = now.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+            const day = now.getDay();
             const hour = now.getHours();
             const minute = now.getMinutes();
             const currentTime = hour + (minute / 60);
 
-            // ABM Pharmacy: Daily 8:00 AM (8.0) - 10:00 PM (22.0)
+            // ABM Pharmacy: Daily 8:00 AM - 10:00 PM
             const isAbmOpen = currentTime >= 8.0 && currentTime < 22.0;
 
-            // Sirikatha Pharmacy: Mon-Sat 6:30 AM (6.5) - 10:00 PM (22.0) | Sun 7:00 AM (7.0) - 9:00 PM (21.0)
+            // Sirikatha Pharmacy: Mon-Sat 6:30 AM - 10:00 PM | Sun 7:00 AM - 9:00 PM
             let isSirikathaOpen = false;
             if (day === 0) {
                 isSirikathaOpen = currentTime >= 7.0 && currentTime < 21.0;
