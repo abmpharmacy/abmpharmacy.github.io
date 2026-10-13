@@ -439,8 +439,8 @@ body:not(.ready) .loader img{animation-play-state:running!important}
 <script>
 /* EDIT OPENING HOURS HERE (24-hour clock, Sri Lanka time) */
 const HOURS = {
-  abm:  { open: 8, close: 21 },
-  siri: { open: 8, close: 21 }
+  abm:  { open: 8,   close: 22 },
+  siri: { open: 6.5, close: 22 }
 };
 
 function colomboHour(){
@@ -448,10 +448,7 @@ function colomboHour(){
   const get = t => +p.find(x => x.type === t).value;
   return get('hour') + get('minute')/60;
 }
-function fmt(h){
-  const s = h >= 12 ? 'PM' : 'AM';
-  return ((h + 11) % 12 + 1) + ' ' + s;
-}
+function fmt(h){ const hh = Math.floor(h), mm = Math.round((h - hh) * 60); return ((hh + 11) % 12 + 1) + (mm ? ':' + String(mm).padStart(2,'0') : '') + ' ' + (hh >= 12 ? 'PM' : 'AM'); }
 function updateStatus(){
   const now = colomboHour();
   document.querySelectorAll('[data-shop]').forEach(el => {
