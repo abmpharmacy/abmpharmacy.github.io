@@ -304,8 +304,8 @@ body:not(.ready) .loader img{animation-play-state:running!important}
 .vcard a{color:var(--glow);font-weight:600;font-size:.95rem;text-decoration:none}
 .vcard a:hover{text-decoration:underline}
 @media (max-width:860px){.vgrid{grid-template-columns:1fr}}
-/* Botpress chat bubble sits bottom-right, so the WhatsApp button moves to bottom-left */
-.float-wa{right:auto!important;left:18px}
+/* WhatsApp chat button positioned at bottom-right */
+.float-wa{left:auto!important;right:18px}
 </style>
 </head>
 <body>
@@ -465,7 +465,5 @@ function stepsProgress(){
 }
 addEventListener('scroll', stepsProgress, {passive:true}); addEventListener('resize', stepsProgress); stepsProgress();
 </script>
-<script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2026/08/21/04/20260821045604-R1O3L2KL.js" defer></script>
 </body>
 </html>
