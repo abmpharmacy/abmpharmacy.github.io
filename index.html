@@ -267,6 +267,13 @@ body:not(.ready) .loader img{animation-play-state:running!important}
   .steps p{margin:0;max-width:none}
 }
 @media (prefers-reduced-motion:reduce){.tilt{opacity:1!important;transform:none!important}}
+
+/* ===== phone layout fix (must stay last) ===== */
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:1fr}
+  .tilt{width:100%;max-width:440px;margin-inline:auto}
+  .card .art{height:auto;aspect-ratio:600/190}
+}
 </style>
 <noscript><style>.loader{display:none}</style></noscript>
 </head>
@@ -437,31 +444,46 @@ body:not(.ready) .loader img{animation-play-state:running!important}
 </a>
 
 <script>
-/* EDIT OPENING HOURS HERE (24-hour clock, Sri Lanka time) */
+/* OPENING HOURS (24-hour clock, Sri Lanka time). Edit here. */
 const HOURS = {
-  abm:  { open: 8,   close: 22 },
-  siri: { open: 6.5, close: 22 }
+  abm:  { normal: [8, 22] },
+  siri: { normal: [6.5, 22], sunday: [7, 21] }
 };
-
-function colomboHour(){
-  const p = new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Colombo',hour:'numeric',minute:'numeric',hourCycle:'h23'}).formatToParts(new Date());
-  const get = t => +p.find(x => x.type === t).value;
-  return get('hour') + get('minute')/60;
+const POYA_WEEKEND = [7, 21];   /* poya day on Saturday or Sunday */
+const POYA_WEEKDAY = [7, 13];   /* poya day on Monday to Friday */
+/* Poya days (YYYY-MM-DD). Add the next year's dates when they are announced. */
+const POYA = [
+  '2026-10-25','2026-11-24','2026-12-23',
+  '2027-01-22','2027-02-20','2027-03-22','2027-04-20','2027-05-19','2027-06-18',
+  '2027-07-18','2027-08-16','2027-09-15','2027-10-15','2027-11-13','2027-12-13'
+];
+function hoursFor(shop, date, dow){
+  const weekend = dow === 0 || dow === 6;
+  if (POYA.includes(date)) return weekend ? POYA_WEEKEND : POYA_WEEKDAY;
+  const h = HOURS[shop];
+  return (dow === 0 && h.sunday) ? h.sunday : h.normal;
+}
+function colomboNow(){
+  const p = new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Colombo',year:'numeric',month:'2-digit',day:'2-digit',weekday:'short',hour:'numeric',minute:'numeric',hourCycle:'h23'}).formatToParts(new Date());
+  const get = t => p.find(x => x.type === t).value;
+  return { hour: +get('hour') + +get('minute')/60, date: get('year') + '-' + get('month') + '-' + get('day'), dow: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(get('weekday')) };
 }
 function fmt(h){ const hh = Math.floor(h), mm = Math.round((h - hh) * 60); return ((hh + 11) % 12 + 1) + (mm ? ':' + String(mm).padStart(2,'0') : '') + ' ' + (hh >= 12 ? 'PM' : 'AM'); }
 function updateStatus(){
-  const now = colomboHour();
+  const n = colomboNow();
+  const t = new Date(n.date + 'T00:00:00Z'); t.setUTCDate(t.getUTCDate() + 1);
+  const tomorrow = t.toISOString().slice(0,10), tdow = (n.dow + 1) % 7;
   document.querySelectorAll('[data-shop]').forEach(el => {
-    const h = HOURS[el.dataset.shop];
-    const isOpen = now >= h.open && now < h.close;
-    const box = el.querySelector('.status');
-    box.classList.toggle('open', isOpen);
-    box.classList.toggle('closed', !isOpen);
-    box.querySelector('.txt').textContent = isOpen ? 'Open now, closes ' + fmt(h.close) : 'Closed, opens ' + fmt(h.open);
+    const key = el.dataset.shop, hrs = hoursFor(key, n.date, n.dow), o = hrs[0], c = hrs[1], isOpen = n.hour >= o && n.hour < c, box = el.querySelector('.status');
+    box.classList.toggle('open', isOpen); box.classList.toggle('closed', !isOpen);
+    let txt;
+    if (isOpen) txt = 'Open now, closes ' + fmt(c);
+    else if (n.hour < o) txt = 'Closed, opens ' + fmt(o);
+    else txt = 'Closed, opens ' + fmt(hoursFor(key, tomorrow, tdow)[0]) + ' tomorrow';
+    box.querySelector('.txt').textContent = txt;
   });
 }
-updateStatus();
-setInterval(updateStatus, 60000);
+updateStatus(); setInterval(updateStatus, 60000);
 
 document.getElementById('stockForm').addEventListener('submit', e => {
   e.preventDefault();
