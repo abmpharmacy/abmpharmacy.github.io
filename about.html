@@ -294,6 +294,18 @@ body:not(.ready) .loader img{animation-play-state:running!important}
 .check textarea{width:100%;padding:14px;border-radius:10px;border:2px solid var(--line);font:inherit;background:#071418;color:var(--ink);min-height:110px;resize:vertical}
 .check textarea:focus{border-color:var(--glow);outline:none}
 @media (max-width:860px){.values,.pgrid{grid-template-columns:1fr}.cta{padding:28px 22px}}
+
+/* pharmacy videos */
+.vgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.vcard{border:1px solid var(--line);border-radius:14px;background:#0d2229;padding:18px;display:flex;flex-direction:column;gap:12px}
+.vcard h3{font-size:1.3rem}
+.vframe{position:relative;width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#04141a}
+.vframe iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vcard a{color:var(--glow);font-weight:600;font-size:.95rem;text-decoration:none}
+.vcard a:hover{text-decoration:underline}
+@media (max-width:860px){.vgrid{grid-template-columns:1fr}}
+/* Botpress chat bubble sits bottom-right, so the WhatsApp button moves to bottom-left */
+.float-wa{right:auto!important;left:18px}
 </style>
 </head>
 <body>
@@ -341,6 +353,13 @@ body:not(.ready) .loader img{animation-play-state:running!important}
     <h2>Our two pharmacies</h2>
     <p class="sub">Call or message either pharmacy directly.</p>
     <div class="pgrid"><article class="pcard" data-shop="abm"><h3>ABM Pharmacy</h3><span class="status" aria-live="polite"><i class="dot"></i><span class="txt">Checking</span></span><p class="desc">Your certified health and wellness companion providing premium care and genuine pharmaceuticals.</p><a class="phone" href="tel:0768961778">076 896 1778</a><a class="loc" href="https://www.google.com/maps/place/ABM+PHARMACY/@7.0838802,80.0795637,936m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3ae2fdc62b959fdf:0x65f2d742614d10db!8m2!3d7.0838802!4d80.0795637!16s%2Fg%2F11zgn5f_rp" target="_blank" rel="noopener">Open in Google Maps</a><a class="btn btn-primary" href="tel:0768961778">Call ABM</a><a class="btn btn-wa" href="https://wa.me/94768961778?text=Hello%2C%20I%20have%20an%20inquiry." target="_blank" rel="noopener">Chat on WhatsApp</a><a class="btn btn-ghost" href="prescription.html?shop=abm">Send prescription to ABM</a></article><article class="pcard" data-shop="siri"><h3>Sirikatha Pharmacy</h3><span class="status" aria-live="polite"><i class="dot"></i><span class="txt">Checking</span></span><p class="desc">Providing certified healthcare solutions, prescription management, and community wellness setup.</p><a class="phone" href="tel:0712068006">071 206 8006</a><a class="loc" href="https://www.google.com/maps/place/Sirikatha+Pharmacy/@7.0729019,80.0159991,936m/data=!3m1!1e3!4m6!3m5!1s0x3ae2fc024169e60f:0x747ba2a78ff7b36c!8m2!3d7.0729019!4d80.0159991!16s%2Fg%2F11bzvb6b53" target="_blank" rel="noopener">Open in Google Maps</a><a class="btn btn-primary" href="tel:0712068006">Call Sirikatha</a><a class="btn btn-wa" href="https://wa.me/94712068006?text=Hello%2C%20I%20have%20an%20inquiry." target="_blank" rel="noopener">Chat on WhatsApp</a><a class="btn btn-ghost" href="prescription.html?shop=siri">Send prescription to Sirikatha</a></article></div>
+  </div>
+</section>
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>Take a look inside</h2>
+    <p class="sub">A quick tour of both pharmacies.</p>
+    <div class="vgrid"><article class="vcard"><h3>ABM Pharmacy</h3><div class="vframe"><iframe src="https://www.youtube-nocookie.com/embed/u91LGTppbmA?rel=0" title="ABM Pharmacy video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><a href="https://youtu.be/u91LGTppbmA" target="_blank" rel="noopener">Watch on YouTube</a></article><article class="vcard"><h3>Sirikatha Pharmacy</h3><div class="vframe"><iframe src="https://www.youtube-nocookie.com/embed/NwRSSzZba1s?rel=0" title="Sirikatha Pharmacy video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><a href="https://youtu.be/NwRSSzZba1s" target="_blank" rel="noopener">Watch on YouTube</a></article></div>
   </div>
 </section>
 <section class="how" id="how">
@@ -446,5 +465,7 @@ function stepsProgress(){
 }
 addEventListener('scroll', stepsProgress, {passive:true}); addEventListener('resize', stepsProgress); stepsProgress();
 </script>
+<script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2026/08/21/04/20260821045604-R1O3L2KL.js" defer></script>
 </body>
 </html>
